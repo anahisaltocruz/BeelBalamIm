@@ -669,109 +669,45 @@ public class PantallaVentanas extends javax.swing.JFrame {
     private void btnSaveChangesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveChangesActionPerformed
         String u = null;
         //Datos por la psoible insercion de una tarjeta
-        int cvc;
-        String pN;
-        String sN;
-        String pA;
-        String sA;
-        int fecha;
+        int cvc = 0;
+        String pN = " ";
+        String sN = " ";
+        String pA = " ";
+        String sA = " ";
+        int fecha = 0;
         String[] list = {"No","Si"};
         JComboBox jcb = new JComboBox(list);
         jcb.setVisible(false);
         
-        if(this.txtDNumTarjeta.getText().equals(oldTarjeta)){//no se cambbiará la tarjeta
-            u = this.editUsuario();
-            this.changes(u);
-        }else{//se quiere cambiar la tarjeta
-            String r = null;
-            try {
-                //Busca si la tarjeta ya existe
-                try ( //Conecta
-                        Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
-                    //Busca si la tarjeta ya existe
-                    CallableStatement stm = conex.prepareCall("{call CHECK_TARJETA(?)}");
-                    stm.setString(1, this.txtDNumTarjeta.getText());
-                    ResultSet rs = stm.executeQuery();
-                    if(rs.next())r = rs.getString(1);
-                    if(r.equals("E")){//ya existe la tarjeta--> se aplica un editUsuario()
-                        u = this.editUsuario();
-                    }else{ //no existe la tarjeta, se deben agregar sus datos
-                        cvc = Integer.parseInt(JOptionPane.showInputDialog("Inserte el CVC"));
-                        fecha = Integer.parseInt(JOptionPane.showInputDialog("Inserte la fecha de vigencia [MMAA]"));
-                        pN = JOptionPane.showInputDialog("Inserte el primer nombre del representante");
-                        jcb.setVisible(true);
-                        jcb.setEditable(true);
-                        JOptionPane.showMessageDialog(null,jcb,"¿El representante tiene segundo nombre?",JOptionPane.QUESTION_MESSAGE);
-                        String opc = (String) jcb.getSelectedItem();
-                        if(opc.equals("Si"))sN = JOptionPane.showInputDialog("Inserte el segundo nombre del representante");
-                        else sN = null;
-                        pA = JOptionPane.showInputDialog("Inserte el primer apellido del representante");
-                        JOptionPane.showMessageDialog(null,jcb,"¿El representante tiene segundo apellido?",JOptionPane.QUESTION_MESSAGE);
-                        String opc2 = (String) jcb.getSelectedItem();
-                        if(opc2.equals("Si"))sA = JOptionPane.showInputDialog("Inserte el segundo apellido del representante");
-                        else sA = null;
-                        u = this.editUsuario(cvc,fecha,pN,sN,pA,sA);
-                    }
-                    this.changes(u);
-                    rs.close();
-                    stm.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("ERROR en saveChanges");
-            }
+        //Codigo para validar extensión de datos
+        int v = 0;
+        int l = this.txtDNombreUsuario.getText().length();
+        if((l>0) && (l<=25)) v++;
+        l = this.txtDCorreoE.getText().length();
+        if((l>0) && (l<=35)) v++;
+        l = this.txtDNumCel.getText().length();
+        if(l==10) v++;
+        l = this.txtDPassword.getText().length();
+        if((l>0) && (l<=20)) v++;
+        l = this.txtDNumTarjeta.getText().length();
+        if(l==16) v++;
+        
+        if(v == 5){
+            transEditarU(u,cvc,fecha,pN,jcb,sN,pA,sA);
+        }else{
+            JOptionPane.showMessageDialog(null,"Datos ingresados no cumplen con los requisitos adecuados.\n"
+                    + "\t*El nombre de usuario debe tener máximo 25 caracteres.\n"
+                    + "\t*El correo electrónico debe tener máximo 35 caracteres\n"
+                    + "\t*El numero de celular debe tener 10 digitos\n"
+                    + "\t*La contraseña debe tener maximo 20 caracteres\n"
+                    + "\t*El numero de tarjeta debe tener 16 caracteres\n");
+            this.changes(".");
         }
         this.btnEdit.setVisible(true);
     }//GEN-LAST:event_btnSaveChangesActionPerformed
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
-        //BOTON COMPRAR
-        if(txtNombres.getText().isEmpty()||txtApeP.getText().isEmpty()||txtEdad.getText().isEmpty()||
-                //txtNac.getText().isEmpty()||
-                txtDia.getText().isEmpty()||txtMes.getText().isEmpty()||
-                txtYear.getText().isEmpty()||cbTramo.getSelectedIndex()==0){
-            
-            JOptionPane.showMessageDialog(null, "¡Error! Alguno o varios datos son incorrectos ");
-            txtNombres.setText("");
-            txtApeP.setText("");
-            txtApeM.setText("");
-            txtEdad.setText("");
-            //txtNac.setText(" ");
-            txtDia.setText("");
-            txtMes.setText("");
-            txtYear.setText("");
-            
-        }else{
-            String nombreRecibido = txtNombres.getText();
-            String[] nombres = nombreRecibido.split("\\s+");
-            if(nombres.length == 1){
-                reserva.setpNombre(txtNombres.getText());
-                reserva.setsNombre(" ");
-                System.out.println("Solo un nombre: "+nombres[0]);
-            }else if(nombres.length == 2){
-                reserva.setpNombre(nombres[0]);
-                reserva.setsNombre(nombres[1]);
-                System.out.println("Primer nombre: "+nombres[0]);
-                System.out.println("Segundo nombre: "+nombres[1]);
-             }
-            reserva.setpApellido(txtApeP.getText());
-            reserva.setsApellido(txtApeM.getText());
-            reserva.setEdad(Integer.parseInt(txtEdad.getText()));
-            //reserva.setNcd(txtNac.getText());
-            reserva.setMatTren(" ");
-            reserva.setDateR(Integer.parseInt(txtDia.getText().concat(txtMes.getText()).concat(txtYear.getText())));
-            reserva.setNombreUs("");
-            reserva.setNombreTr(cbTramo.getSelectedItem().toString());
-            reserva.hacerConexionrRe();
-            int x = JOptionPane.showOptionDialog(this,"¿Deseas completar la comprar?","Confirmacion Reserva",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones, botones[0]);
-
-            /*if(x==0){
-
-            }else if(x==1){
-
-            }else if(x==2){
-
-            }*/
-        }
+        
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void cbTramoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTramoActionPerformed
@@ -792,7 +728,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
              ((DefaultTableModel)tabla2.getModel()).removeRow(i);
         }
         try{
-            try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
+            try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM","sa", "2020640576")) {
                 CallableStatement resConexion;
                 resConexion = miConexion.prepareCall("{call VER_HISTORIAL_COMPRAS(?)}");
                 //System.out.println("nUsuario en window: "+nUsuario);
@@ -843,16 +779,16 @@ public class PantallaVentanas extends javax.swing.JFrame {
         this.txtDPassword.setEditable(false);
 
         System.out.println(u);
-        if(u.equals("SC")){ //sin cambios en el nombre del usuario
+        if(u.equals(".")){ //sin cambios en el nombre del usuario
             this.getData(this.getUser(),2);
-            JOptionPane.showMessageDialog(null, "Sin cambios en el nombre del usuario");
+            JOptionPane.showMessageDialog(null, "Hubo un error al intentar guardar los nuevos cambios,intente de nuevo");
         }
-        else if(u.equals("UYE")) {//no se cambia el usuario, porque ya existe
+        /*else if(u.equals("UYE")) {//no se cambia el usuario, porque ya existe
             JOptionPane.showMessageDialog(null, "Usuario no válido");
             this.getData(this.getUser(),2);
-        }
+        }*/
         else {//se cambió el usuario
-            JOptionPane.showMessageDialog(null, "Usuario cambiado con exito");
+            JOptionPane.showMessageDialog(null, "Datos cambiados con exito");
             this.setUser(u);
             this.getData(u,2);
         }
@@ -882,7 +818,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         try {
             //Obtiene la info del usuario
             try ( //Conecta
-                    Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
+                    Connection conex = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM","sa", "2020640576")) {
                 //Obtiene la info del usuario
                 CallableStatement stm = conex.prepareCall("{call GET_USERDATA(?)}");
                 stm.setString(1, user);
@@ -915,43 +851,42 @@ public class PantallaVentanas extends javax.swing.JFrame {
         }
     }
     
-    public String editUsuario(int cvc,int fecha,String pN,String sN,String pA,String sA){
-        //Metodo para editar datos del usuario cuando pretende cambiar la tarjeta
-        System.out.println("Agrega una tarjeta");
+    public String editUsuario(String u,int cvc,int fecha,String pN,JComboBox jcb,String sN,String pA,String sA){
+        cvc = Integer.parseInt(JOptionPane.showInputDialog("Inserte el CVC"));
+        fecha = Integer.parseInt(JOptionPane.showInputDialog("Inserte la fecha de vigencia [MMAA]"));
+        pN = JOptionPane.showInputDialog("Inserte el primer nombre del representante");
+        jcb.setVisible(true);
+        jcb.setEditable(true);
+        JOptionPane.showMessageDialog(null,jcb,"¿El representante tiene segundo nombre?",JOptionPane.QUESTION_MESSAGE);
+        String opc = (String) jcb.getSelectedItem();
+        if(opc.equals("Si"))sN = JOptionPane.showInputDialog("Inserte el segundo nombre del representante");
+        else sN = "0";
+        pA = JOptionPane.showInputDialog("Inserte el primer apellido del representante");
+        JOptionPane.showMessageDialog(null,jcb,"¿El representante tiene segundo apellido?",JOptionPane.QUESTION_MESSAGE);
+        String opc2 = (String) jcb.getSelectedItem();
+        if(opc2.equals("Si"))sA = JOptionPane.showInputDialog("Inserte el segundo apellido del representante");
+        else sA = "0";
+        
         String r = null;
-        try {
-            //Conecta
-            Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe");
-            //Inserta la nueva tarjeta
-            CallableStatement stm = conex.prepareCall("{call INSERT_TARJETA(?,?,?,?,?,?,?)}");
-            stm.setString(1, this.txtDNumTarjeta.getText());
-            stm.setInt(2,cvc );
-            stm.setString(3,pN );
-            stm.setString(4,sN);
-            stm.setString(5,pA);
-            stm.setString(6,sA);
-            stm.setInt(7,fecha);
-            ResultSet rs = stm.executeQuery();
-            if(rs.next()){
-                r = rs.getString(1);
-                System.out.println("RES1 = "+ r);
-            }
-            stm = conex.prepareCall("{call EDIT_U_COMPLETE(?,?,?,?,?,?)}");
+        try (Connection conex = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM","sa", "2020640576")) {
+            CallableStatement stm = conex.prepareCall("{call EDIT_U_COMPLETE(?,?,?,?,?,?,?,?,?,?,?,?)}");
             stm.setString(1, this.getUser());
             stm.setString(2, this.txtDNombreUsuario.getText());
             stm.setString(3, this.txtDPassword.getText());
             stm.setString(4, this.txtDCorreoE.getText());
             stm.setString(5, this.txtDNumCel.getText());
             stm.setString(6, this.txtDNumTarjeta.getText());
-            rs = stm.executeQuery();
-            if(rs.next()){
-                r = rs.getString(1);
-                System.out.println("RES = "+ r);
-            }
+            stm.setInt(7,cvc);
+            stm.setString(8,pN );
+            stm.setString(9, sN);
+            stm.setString(10, pA);
+            stm.setString(11,sA );
+            stm.setInt(12, fecha);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next())r = rs.getString(1);
         } catch (SQLException ex) {
-            System.out.println("ERROR en editUsuario AGREGARTARJETA");
+            System.out.println("ERROR en saveChanges");
         }
-        
         return r;
     }
     public String editUsuario(){//Metodo para editar datos del usuario cuando no pretende cambiar la tarjeta
@@ -959,15 +894,14 @@ public class PantallaVentanas extends javax.swing.JFrame {
         System.out.println("No se tiene que agregar una tarjeta");
         try {
             //Conecta
-            Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe");
+            Connection conex = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM","sa", "2020640576");
             //Cambia los datos, excepto los de la tarjeta
-            CallableStatement stm = conex.prepareCall("{call EDIT_U_SIMPLE(?,?,?,?,?,?)}");
+            CallableStatement stm = conex.prepareCall("{call EDIT_U_SIMPLE(?,?,?,?,?)}");
             stm.setString(1, this.getUser());
             stm.setString(2, this.txtDNombreUsuario.getText());
             stm.setString(3, this.txtDPassword.getText());
             stm.setString(4, this.txtDCorreoE.getText());
             stm.setString(5, this.txtDNumCel.getText());
-            stm.setString(6, this.txtDNumTarjeta.getText());
             ResultSet rs = stm.executeQuery();
             if(rs.next())r = rs.getString(1);
         } catch (SQLException ex) {
@@ -999,7 +933,15 @@ public class PantallaVentanas extends javax.swing.JFrame {
         }
     }
     
-    
+    public void transEditarU(String u,int cvc,int fecha,String pN,JComboBox jcb,String sN,String pA,String sA){
+        if(this.txtDNumTarjeta.getText().equals(oldTarjeta)){//no se cambbiará la tarjeta
+            u = this.editUsuario();
+            this.changes(u);
+        }else{//se quiere cambiar la tarjeta
+            u = this.editUsuario(u, cvc, fecha, pN, jcb, sN, pA, sA);
+            this.changes(u);
+        }
+    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

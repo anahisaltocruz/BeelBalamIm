@@ -177,7 +177,7 @@ public class PantallaPrueba extends javax.swing.JFrame {
         
         try {
             //Conecta
-            conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe");
+            conex = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM","sa", "2020640576");
             //Busca el usuario
             stm = conex.prepareCall("{call VALIDAR_INICIOSESION(?)}");
             String uIS = this.txtUsuario.getText();
@@ -189,13 +189,16 @@ public class PantallaPrueba extends javax.swing.JFrame {
                 System.out.println(contra);
                 if(contra.equals(this.txtContra.getText())){
                     //Cambio de panel
-                    //panelWindow = new Window();
-                    
+                    /*pantallaVent = new PantallaVentanas();
+                    pantallaVent.setUser(this.txtUsuario.getText());
+                    pantallaVent.setBounds(panelP.getBounds());
+                    panelP.removeAll();
+                    panelP.add(pantallaVent);
+                    panelP.updateUI();*/
                     pantallaVent = new PantallaVentanas();
                     pantallaVent.setUser(this.txtUsuario.getText());
                     this.setVisible(false);
-                    pantallaVent.setVisible(true);  
-                    
+                    pantallaVent.setVisible(true); 
                 }else{
                     JOptionPane.showMessageDialog(null, "Contraseña incorrecta! Intente de nuevo");
                 }
@@ -207,8 +210,7 @@ public class PantallaPrueba extends javax.swing.JFrame {
             conex.close();
         } catch (SQLException ex) {
             System.out.println("ERROR :c");
-        }
-        
+        }    
     }//GEN-LAST:event_btnIniciarSActionPerformed
 
     /**

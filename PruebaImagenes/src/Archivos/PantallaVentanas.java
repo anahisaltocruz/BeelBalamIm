@@ -659,7 +659,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         oldTarjeta = this.txtDNumTarjeta.getText();
         this.btnEdit.setVisible(false);
         this.btnSaveChanges.setVisible(true);
-        this.txtDNombreUsuario.setEditable(true);
+        //this.txtDNombreUsuario.setEditable(true);
         this.txtDCorreoE.setEditable(true);
         this.txtDNumCel.setEditable(true);
         this.txtDNumTarjeta.setEditable(true);

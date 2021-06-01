@@ -129,7 +129,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         txtEdad = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        cbNac = new javax.swing.JComboBox<>();
         btnComprar = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
 
@@ -500,7 +500,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("AP. MATERNO");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbNac.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ALEMANA", "ARABE", "ARGENTINA", "BRASILEÑA", "CANADIENSE ", "CHINA", "COREANA", "DANESA", "ESPAÑOLA", "ESTADOUNIDENSE", "HUNGARA", "MEXICANA", "SUIZA", "OTROS " }));
 
         btnComprar.setText("COMPRAR");
         btnComprar.addActionListener(new java.awt.event.ActionListener() {
@@ -547,7 +547,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
                             .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbNac, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(97, 97, 97)
                                     .addComponent(btnComprar)
                                     .addGap(149, 149, 149))
@@ -617,7 +617,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnComprar))
                 .addGap(41, 41, 41)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -767,21 +767,20 @@ public class PantallaVentanas extends javax.swing.JFrame {
             reserva.setpApellido(txtApeP.getText());
             reserva.setsApellido(txtApeM.getText());
             reserva.setEdad(Integer.parseInt(txtEdad.getText()));
-            //reserva.setNcd(txtNac.getText());
+            reserva.setNcd(cbNac.getSelectedItem().toString());
             reserva.setMatTren(" ");
-            reserva.setDateR(Integer.parseInt(txtDia.getText().concat(txtMes.getText()).concat(txtYear.getText())));
+            reserva.setDateR(date);
             reserva.setNombreUs("");
             reserva.setNombreTr(cbTramo.getSelectedItem().toString());
             reserva.hacerConexionrRe();
             int x = JOptionPane.showOptionDialog(this,"¿Deseas completar la comprar?","Confirmacion Reserva",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones, botones[0]);
-            
-            /*if(x==0){
-
+            if(x==0){
+                JOptionPane.showMessageDialog(null, "Se ha generado correctamente la reserva");
             }else if(x==1){
-
+                //SE HACE LA MODIFICACION 
             }else if(x==2){
-
-            }*/
+               //SE HACE LA CANCELACION
+            }
         }
     }//GEN-LAST:event_btnComprarActionPerformed
 
@@ -1054,9 +1053,9 @@ public class PantallaVentanas extends javax.swing.JFrame {
     private javax.swing.JButton btnSaveChanges;
     private javax.swing.JComboBox<String> cbEstFin;
     private javax.swing.JComboBox<String> cbEstIni;
+    private javax.swing.JComboBox<String> cbNac;
     private javax.swing.JComboBox<String> cbTramo;
     private com.toedter.calendar.JDateChooser fecha;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -628,7 +628,7 @@
                                       <Component id="txtEdad" alignment="0" min="-2" pref="52" max="-2" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="1" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jComboBox3" min="-2" pref="121" max="-2" attributes="0"/>
+                                              <Component id="cbNac" min="-2" pref="121" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
                                               <Component id="btnComprar" min="-2" max="-2" attributes="0"/>
                                               <EmptySpace min="-2" pref="149" max="-2" attributes="0"/>
@@ -721,7 +721,7 @@
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cbNac" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnComprar" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
@@ -975,14 +975,24 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtEdad">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBox3">
+                <Component class="javax.swing.JComboBox" name="cbNac">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="4">
-                        <StringItem index="0" value="Item 1"/>
-                        <StringItem index="1" value="Item 2"/>
-                        <StringItem index="2" value="Item 3"/>
-                        <StringItem index="3" value="Item 4"/>
+                      <StringArray count="14">
+                        <StringItem index="0" value="ALEMANA"/>
+                        <StringItem index="1" value="ARABE"/>
+                        <StringItem index="2" value="ARGENTINA"/>
+                        <StringItem index="3" value="BRASILE&#xd1;A"/>
+                        <StringItem index="4" value="CANADIENSE "/>
+                        <StringItem index="5" value="CHINA"/>
+                        <StringItem index="6" value="COREANA"/>
+                        <StringItem index="7" value="DANESA"/>
+                        <StringItem index="8" value="ESPA&#xd1;OLA"/>
+                        <StringItem index="9" value="ESTADOUNIDENSE"/>
+                        <StringItem index="10" value="HUNGARA"/>
+                        <StringItem index="11" value="MEXICANA"/>
+                        <StringItem index="12" value="SUIZA"/>
+                        <StringItem index="13" value="OTROS "/>
                       </StringArray>
                     </Property>
                   </Properties>

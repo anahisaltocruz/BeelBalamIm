@@ -23,7 +23,7 @@ public class paReservar {
     private int edad;
     private String ncd;
     private String matTren;
-    private int dateR;
+    private String dateR;
     private String nombreUs;
     private String nombreTr;  
     //METODOS
@@ -84,11 +84,11 @@ public class paReservar {
         this.matTren = matTren;
     }
 
-    public int getDateR() {
+    public String getDateR() {
         return dateR;
     }
 
-    public void setDateR(int dateR) {
+    public void setDateR(String dateR) {
         this.dateR = dateR;
     }
 
@@ -122,10 +122,11 @@ public class paReservar {
             resConexion.setInt(5,this.getEdad());
             resConexion.setString(6,this.getNcd());
             resConexion.setString(7,this.getMatTren());
-            resConexion.setInt(8,this.getDateR());
+            resConexion.setString(8,this.getDateR());
             resConexion.setString(9,this.getNombreUs());
             resConexion.setString(10,this.getNombreTr());
-            JOptionPane.showMessageDialog(null, "Se ha generado correctamente la reserva");
+            //JOptionPane.showMessageDialog(null, "Se ha generado correctamente la reserva");
+            System.out.println("Se inserto a tabla reserva");
             resConexion.close();
             }
         } catch (Exception e) {

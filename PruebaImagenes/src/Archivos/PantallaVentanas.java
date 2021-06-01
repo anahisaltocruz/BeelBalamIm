@@ -50,6 +50,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         this.txtDNumTarjeta.setEditable(false);
         this.txtDPtosAcum.setEditable(false);
         this.txtDPassword.setEditable(false);
+        this.btnModificar.setVisible(false);
         
         DefaultTableModel modelo = (DefaultTableModel)tabla2.getModel();
         modelo.addColumn("ID Reserva");
@@ -122,6 +123,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         txtEdad = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
         btnComprar = new javax.swing.JButton();
+        btnModificar = new javax.swing.JButton();
         jPanel5 = new FondoPantallaVent();
         btnActualizar = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
@@ -407,6 +409,8 @@ public class PantallaVentanas extends javax.swing.JFrame {
             }
         });
 
+        btnModificar.setText("MODIFICAR RESERVA");
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -462,7 +466,9 @@ public class PantallaVentanas extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(97, 97, 97)
-                                .addComponent(btnComprar))))
+                                .addComponent(btnComprar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnModificar))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(228, 228, 228)
                         .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -520,7 +526,8 @@ public class PantallaVentanas extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnComprar))
+                    .addComponent(btnComprar)
+                    .addComponent(btnModificar))
                 .addContainerGap(240, Short.MAX_VALUE))
         );
 
@@ -707,7 +714,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveChangesActionPerformed
 
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
-        
+        modificarReserva();
     }//GEN-LAST:event_btnComprarActionPerformed
 
     private void cbTramoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTramoActionPerformed
@@ -933,6 +940,15 @@ public class PantallaVentanas extends javax.swing.JFrame {
         }
     }
     
+    public void modificarReserva(){
+        this.jLabel9.setText("Modificando la reserva");
+        this.btnModificar.setVisible(true);
+        this.btnComprar.setVisible(false);
+        
+        this.btnComprar.setVisible(true);
+        this.btnModificar.setVisible(false);
+    }
+    
     public void transEditarU(String u,int cvc,int fecha,String pN,JComboBox jcb,String sN,String pA,String sA){
         if(this.txtDNumTarjeta.getText().equals(oldTarjeta)){//no se cambbiará la tarjeta
             u = this.editUsuario();
@@ -982,6 +998,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnEliminarUsuario;
+    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnSaveChanges;
     private javax.swing.JComboBox<String> cbEstFin;
     private javax.swing.JComboBox<String> cbEstIni;

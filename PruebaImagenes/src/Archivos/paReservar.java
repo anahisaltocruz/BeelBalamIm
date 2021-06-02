@@ -109,10 +109,10 @@ public class paReservar {
     }
     
     public void hacerConexionrRe(){
-        try {                                               try ( //DESKTOP-KT6L84G
-                Connection miConexion = DriverManager.getConnection(
-                        "jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576") //2020640576
-            ) {
+        try { try ( 
+                //Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576") //2020640576
+                Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")
+                ) {
             CallableStatement resConexion;
             resConexion = miConexion.prepareCall("{call COMPRA_BOLETOS(?,?,?,?,?,?,?,?,?,?)}");
             resConexion.setString(1,this.getpNombre());
@@ -128,6 +128,7 @@ public class paReservar {
             //JOptionPane.showMessageDialog(null, "Se ha generado correctamente la reserva");
             System.out.println("Se inserto a tabla reserva");
             resConexion.close();
+            miConexion.close();
             }
         } catch (Exception e) {
             System.out.println("Ha habido un error al generar la reserva");

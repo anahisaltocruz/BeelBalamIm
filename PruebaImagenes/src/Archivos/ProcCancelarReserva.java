@@ -27,13 +27,15 @@ public class ProcCancelarReserva {
     
     public void hacerConexionCR(){
         try {
-            try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576")) {
+            //try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576")) {
+            try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
                 CallableStatement resConexionCR;
                 resConexionCR = miConexionBU.prepareCall("{call CANCELAR_RESERVA(?)}");
                 resConexionCR.setInt(1,getCodReserva());
                 resConexionCR.execute();
                 JOptionPane.showMessageDialog(null, "Se ha cancelado correctamente la reserva");
                 resConexionCR.close();
+                miConexionBU.close();
             }
         } catch (Exception e) {
             System.out.println("Ha habido un error al cancelar la reserva");

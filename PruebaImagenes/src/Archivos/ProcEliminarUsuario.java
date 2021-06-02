@@ -44,6 +44,7 @@ public class ProcEliminarUsuario {
                 resConexionBU.execute();
                 JOptionPane.showMessageDialog(null, "Se ha eliminado correctamente al usuario");
                 resConexionBU.close();
+                miConexionBU.close();
             }
         } catch (Exception e) {
             System.out.println("Ha habido un error al eliminar al usuario");

@@ -923,7 +923,8 @@ public class PantallaVentanas extends javax.swing.JFrame {
 
     private void btnBuscarVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVActionPerformed
         try {
-            try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576")) {
+            //try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576")) {
+            try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
                 CallableStatement resConexionV;
                 resConexionV = miConexionBU.prepareCall("{call VER_RESERVAS_CLIENTE(?,?,?,?)}");
                 String nombreS = txtNV.getText();

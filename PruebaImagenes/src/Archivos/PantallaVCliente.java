@@ -46,7 +46,9 @@ public class PantallaVCliente extends javax.swing.JFrame {
     
     public void verDatos(){
         try {
-            try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576")) {
+            //try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576")) {
+            try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
+                
                 CallableStatement resConexionV;
                 //PARA VERIFICAR EL VALOR DE LAS VARIABLES:
                 System.out.println("n1: "+pantallaV.n1);

@@ -146,6 +146,7 @@ public class ProcCrearUsuario {
             JOptionPane.showMessageDialog(null, "Se ha agreago correctamente al usuario");
             resConexion.execute();
             resConexion.close();
+            miConexion.close();
             }
         } catch (Exception e) {
             System.out.println("Ha habido un error al crear al usuario");

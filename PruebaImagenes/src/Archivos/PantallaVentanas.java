@@ -37,6 +37,11 @@ public class PantallaVentanas extends javax.swing.JFrame {
     public static PantallaPrueba p3 ;
     public static PantallaRegistro panReg2;
     
+    public static String n1;
+    public static String n2;
+    public static String a1;
+    public static String a2;
+    
     FondoPantallaVent fondo = new FondoPantallaVent();
     
     public PantallaVentanas() {
@@ -96,14 +101,6 @@ public class PantallaVentanas extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnSaveChanges = new javax.swing.JButton();
         btnEliminarUsuario = new javax.swing.JButton();
-        jPanel5 = new FondoPantallaVent();
-        btnActualizar = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tabla2 = new javax.swing.JTable();
-        jPanel6 = new FondoPantallaVent();
-        jLabel23 = new javax.swing.JLabel();
-        btnCerrarSesion = new javax.swing.JButton();
         jPanel4 = new FondoPantallaVent();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -132,6 +129,22 @@ public class PantallaVentanas extends javax.swing.JFrame {
         cbNac = new javax.swing.JComboBox<>();
         btnComprar = new javax.swing.JButton();
         fecha = new com.toedter.calendar.JDateChooser();
+        jPanel5 = new FondoPantallaVent();
+        btnActualizar = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tabla2 = new javax.swing.JTable();
+        jLabel24 = new javax.swing.JLabel();
+        txtNV = new javax.swing.JTextField();
+        txtAMaV = new javax.swing.JTextField();
+        txtAPaV = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
+        btnBuscarV = new javax.swing.JButton();
+        jPanel6 = new FondoPantallaVent();
+        jLabel23 = new javax.swing.JLabel();
+        btnCerrarSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -322,106 +335,6 @@ public class PantallaVentanas extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Ver Perfil", jPanel3);
-
-        jPanel5.setBackground(new java.awt.Color(51, 0, 51));
-        jPanel5.setPreferredSize(new java.awt.Dimension(829, 480));
-
-        btnActualizar.setText("ACTUALIZAR INFORMACIÓN");
-        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnActualizarActionPerformed(evt);
-            }
-        });
-
-        jPanel7.setBackground(new java.awt.Color(255, 204, 255));
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HISTORIAL DE COMPRAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(102, 0, 102))); // NOI18N
-
-        tabla2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(tabla2);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 51, Short.MAX_VALUE))
-        );
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnActualizar)
-                .addGap(31, 31, 31))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(btnActualizar)
-                .addGap(30, 30, 30)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Ver Historial", jPanel5);
-
-        jPanel6.setBackground(new java.awt.Color(0, 51, 51));
-
-        jLabel23.setFont(new java.awt.Font("Times New Roman", 2, 40)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel23.setText("¡VUELVA PRONTO!");
-
-        btnCerrarSesion.setText("CERRAR SESIÓN");
-        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSesionActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCerrarSesion)
-                .addGap(353, 353, 353))
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
-                .addComponent(btnCerrarSesion)
-                .addContainerGap(297, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Cerrar Sesión", jPanel6);
 
         jPanel4.setBackground(new java.awt.Color(51, 0, 51));
 
@@ -634,6 +547,170 @@ public class PantallaVentanas extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Comprar Boleto", jPanel4);
 
+        jPanel5.setBackground(new java.awt.Color(51, 0, 51));
+        jPanel5.setPreferredSize(new java.awt.Dimension(829, 480));
+
+        btnActualizar.setText("ACTUALIZAR INFORMACIÓN");
+        btnActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActualizarActionPerformed(evt);
+            }
+        });
+
+        jPanel7.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "HISTORIAL DE COMPRAS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14), new java.awt.Color(102, 0, 102))); // NOI18N
+
+        tabla2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tabla2);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 797, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 21, Short.MAX_VALUE))
+        );
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
+        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel24.setText("BUSCAR INFORMACIÓN A TRAVÉS DEL NOMBRE DE CLIENTE:");
+
+        txtNV.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtAMaV.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        txtAPaV.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel25.setText("NOMBRE(S)");
+
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel26.setText("AP PATERNO");
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel27.setText("AP MATERNO");
+
+        btnBuscarV.setText("BUSCAR");
+        btnBuscarV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarVActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(btnActualizar)
+                                .addGap(31, 31, 31))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(89, 89, 89)
+                                .addComponent(jLabel26)
+                                .addGap(78, 78, 78)
+                                .addComponent(jLabel27)
+                                .addGap(47, 47, 47))))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel24)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtAPaV, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnBuscarV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtAMaV, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btnActualizar)
+                .addGap(30, 30, 30)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel24)
+                    .addComponent(txtNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAMaV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtAPaV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(jLabel26)
+                    .addComponent(jLabel27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnBuscarV)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Ver Historial", jPanel5);
+
+        jPanel6.setBackground(new java.awt.Color(0, 51, 51));
+
+        jLabel23.setFont(new java.awt.Font("Times New Roman", 2, 40)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel23.setText("¡VUELVA PRONTO!");
+
+        btnCerrarSesion.setText("CERRAR SESIÓN");
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(163, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCerrarSesion)
+                .addGap(353, 353, 353))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(btnCerrarSesion)
+                .addContainerGap(297, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Cerrar Sesión", jPanel6);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -820,6 +897,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
                 }
                 rs.close();
                 resConexion.close();
+                miConexion.close();
             }
         }catch(Exception e){
             //System.out.println("Ha habido un error al crear al usuario");
@@ -842,6 +920,72 @@ public class PantallaVentanas extends javax.swing.JFrame {
            System.exit(0); 
         }
     }//GEN-LAST:event_btnEliminarUsuarioActionPerformed
+
+    private void btnBuscarVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVActionPerformed
+        try {
+            try (Connection miConexionBU = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576")) {
+                CallableStatement resConexionV;
+                resConexionV = miConexionBU.prepareCall("{call VER_RESERVAS_CLIENTE(?,?,?,?)}");
+                String nombreS = txtNV.getText();
+                String[] nombres = nombreS.split("\\s+");
+                if(nombres.length == 1){
+                    n1=txtNV.getText();
+                    n2="";
+                    resConexionV.setString(1,n1);
+                    resConexionV.setString(2,n2);
+                    //System.out.println("Solo un nombre c: "+nombres[0]);
+                    System.out.println("Solo un nombre c: "+n1);
+                }else if(nombres.length == 2){
+                    n1=nombres[0];
+                    n2=nombres[1];
+                    resConexionV.setString(1,n1);
+                    resConexionV.setString(2,n2);
+                    //System.out.println("Primer nombre: "+nombres[0]);
+                    System.out.println("Primer nombre: "+n1);
+                    //System.out.println("Segundo nombre: "+nombres[1]);
+                    System.out.println("Segundo nombre: "+n2);
+                }
+                resConexionV.setString(3,txtAPaV.getText());
+                resConexionV.setString(4,txtAMaV.getText());
+                ResultSet res = resConexionV.executeQuery();
+                if(res.next()){
+                    //poner los datos en la tabla 
+                    
+                    //DECLARAR VARIABLES STATIC PARA PASAR A LA 
+                    //OTRA PANTALLA 
+                    
+                    PantallaVCliente pantallaVista = new PantallaVCliente();
+                    //this.setVisible(false); 
+                    pantallaVista.setVisible(true);  
+                  /*
+                    for(int i = 0; i<((DefaultTableModel)tabla2.getModel()).getRowCount();i++){
+                        ((DefaultTableModel)tabla2.getModel()).removeRow(i);
+                    }
+                    
+                    
+                    //CHECAAAAAAR DE LA 947 A LA 951
+                    String nombre = res.getString(2)+" "+res.getString(3)+" "+res.getString(4)+" "+
+                            res.getString(5);
+                    Object fila[] = {res.getInt(1),nombre,res.getDate(6),res.getString(7),
+                        res.getString(8),res.getString(9),res.getDouble(10)};
+                    ((DefaultTableModel)tabla2.getModel()).addRow(fila);
+                    
+                   */ 
+                }
+                
+                else{
+                    JOptionPane.showMessageDialog(null, "No se encontraron coincidencias con el nombre ingresado");
+                }
+                
+                res.close();
+                resConexionV.close();
+                miConexionBU.close();
+            }
+        } catch (Exception e) {
+            System.out.println("Ha habido un error al buscar al usuario");
+            System.out.println(e);
+        }
+    }//GEN-LAST:event_btnBuscarVActionPerformed
 
     public void changes(String u){
         //Metodo que manda la info de los cambios hechos en los datos del usuario
@@ -1046,6 +1190,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnAcuerdo;
+    private javax.swing.JButton btnBuscarV;
     private javax.swing.JButton btnCerrarSesion;
     private javax.swing.JButton btnComprar;
     private javax.swing.JButton btnEdit;
@@ -1072,6 +1217,10 @@ public class PantallaVentanas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1091,6 +1240,8 @@ public class PantallaVentanas extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tabla2;
+    private javax.swing.JTextField txtAMaV;
+    private javax.swing.JTextField txtAPaV;
     private javax.swing.JTextField txtApeM;
     private javax.swing.JTextField txtApeP;
     private javax.swing.JTextField txtDCorreoE;
@@ -1102,6 +1253,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
     private javax.swing.JTextField txtDia;
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtMes;
+    private javax.swing.JTextField txtNV;
     private javax.swing.JTextField txtNombres;
     private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables

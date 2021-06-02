@@ -177,7 +177,7 @@ public class PantallaPrueba extends javax.swing.JFrame {
         
         try {
             //Conecta
-            conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe");
+            conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-3A3Q5S9M\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "ABCpiz12");
             //Busca el usuario
             stm = conex.prepareCall("{call VALIDAR_INICIOSESION(?)}");
             String uIS = this.txtUsuario.getText();

@@ -111,10 +111,10 @@ public class paReservar {
     public void hacerConexionrRe(){
         try {                                               try ( //DESKTOP-KT6L84G
                 Connection miConexion = DriverManager.getConnection(
-                        "jdbc:sqlserver://DESKTOP-KT6L84G:1433;databaseName=BEEL_BALAM", "sa", "2020640576") //2020640576
+                        "jdbc:sqlserver://LAPTOP-3A3Q5S9M\\SQLEXPRESS:1433;databaseName=BEEL_BALAM", "sa", "ABCpiz12") //2020640576
             ) {
             CallableStatement resConexion;
-            resConexion = miConexion.prepareCall("{call COMPRA_BOLETOS(?,?,?,?,?,?,?,?,?,?)}");
+            resConexion = miConexion.prepareCall("{call VERIFICACION_MATRICULA(?,?,?,?,?,?,?,?,?,?)}");
             resConexion.setString(1,this.getpNombre());
             resConexion.setString(2,this.getsNombre());
             resConexion.setString(3,this.getpApellido());
@@ -126,6 +126,7 @@ public class paReservar {
             resConexion.setString(9,this.getNombreUs());
             resConexion.setString(10,this.getNombreTr());
             //JOptionPane.showMessageDialog(null, "Se ha generado correctamente la reserva");
+            resConexion.execute();
             System.out.println("Se inserto a tabla reserva");
             resConexion.close();
             }

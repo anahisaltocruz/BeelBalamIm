@@ -13,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.StringTokenizer;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -695,7 +696,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
             try {
                 //Busca si la tarjeta ya existe
                 try ( //Conecta
-                        Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
+                        Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-3A3Q5S9M\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "ABCpiz12")) {
                     //Busca si la tarjeta ya existe
                     CallableStatement stm = conex.prepareCall("{call CHECK_TARJETA(?)}");
                     stm.setString(1, this.txtDNumTarjeta.getText());
@@ -734,9 +735,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
     private void btnComprarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnComprarActionPerformed
         //BOTON COMPRAR
         if(txtNombres.getText().isEmpty()||txtApeP.getText().isEmpty()||txtEdad.getText().isEmpty()||
-                //txtNac.getText().isEmpty()||
-                txtDia.getText().isEmpty()||txtMes.getText().isEmpty()||
-                txtYear.getText().isEmpty()||cbTramo.getSelectedIndex()==0){
+                cbTramo.getSelectedIndex()==0){
             
             JOptionPane.showMessageDialog(null, "¡Error! Alguno o varios datos son incorrectos ");
             txtNombres.setText("");
@@ -763,15 +762,23 @@ public class PantallaVentanas extends javax.swing.JFrame {
              }
             SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
             String date = formato.format(this.fecha.getDate());
+            StringTokenizer dt = new StringTokenizer(date,"/");
+            String day = dt.nextToken();
+            String month = dt.nextToken();
+            String year = dt.nextToken();
+            txtDia.setText(day);
+            txtMes.setText(month);
+            txtYear.setText(year);
             System.out.println(date);
+            System.out.println(dt);
             reserva.setpApellido(txtApeP.getText());
             reserva.setsApellido(txtApeM.getText());
             reserva.setEdad(Integer.parseInt(txtEdad.getText()));
             reserva.setNcd(cbNac.getSelectedItem().toString());
-            reserva.setMatTren(" ");
+            reserva.setMatTren(day.concat(month).concat(year).concat("0900TS1D"));
             reserva.setDateR(date);
-            reserva.setNombreUs("");
-            reserva.setNombreTr(cbTramo.getSelectedItem().toString());
+            reserva.setNombreUs(user);
+            reserva.setNombreTr("TS1");
             reserva.hacerConexionrRe();
             int x = JOptionPane.showOptionDialog(this,"¿Deseas completar la comprar?","Confirmacion Reserva",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.INFORMATION_MESSAGE,null,botones, botones[0]);
             if(x==0){
@@ -802,7 +809,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
              ((DefaultTableModel)tabla2.getModel()).removeRow(i);
         }
         try{
-            try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
+            try (Connection miConexion = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-3A3Q5S9M\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "ABCpiz12")) {
                 CallableStatement resConexion;
                 resConexion = miConexion.prepareCall("{call VER_HISTORIAL_COMPRAS(?)}");
                 //System.out.println("nUsuario en window: "+nUsuario);
@@ -892,7 +899,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         try {
             //Obtiene la info del usuario
             try ( //Conecta
-                    Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe")) {
+                    Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-3A3Q5S9M\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "ABCpiz12")) {
                 //Obtiene la info del usuario
                 CallableStatement stm = conex.prepareCall("{call GET_USERDATA(?)}");
                 stm.setString(1, user);
@@ -931,7 +938,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         String r = null;
         try {
             //Conecta
-            Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe");
+            Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-3A3Q5S9M\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "ABCpíz12");
             //Inserta la nueva tarjeta
             CallableStatement stm = conex.prepareCall("{call INSERT_TARJETA(?,?,?,?,?,?,?)}");
             stm.setString(1, this.txtDNumTarjeta.getText());
@@ -969,7 +976,7 @@ public class PantallaVentanas extends javax.swing.JFrame {
         System.out.println("No se tiene que agregar una tarjeta");
         try {
             //Conecta
-            Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-8M3QSOFP\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "llatitabebe");
+            Connection conex = DriverManager.getConnection("jdbc:sqlserver://LAPTOP-3A3Q5S9M\\SQLEXPRESS:1433;databaseName=BEEL_BALAM","sa", "ABCpiz12");
             //Cambia los datos, excepto los de la tarjeta
             CallableStatement stm = conex.prepareCall("{call EDIT_U_SIMPLE(?,?,?,?,?,?)}");
             stm.setString(1, this.getUser());
